@@ -24,7 +24,7 @@ public class OdontologoService {
 
         Odontologo existe = this.odontologoRepository.findByMatricula(dto.getMatricula());
         if(existe != null){
-            throw new ConsultorioApiException("El usuario ya existe", HttpStatusCode.valueOf(400));
+            throw new ConsultorioApiException("El odontologo ya existe", HttpStatusCode.valueOf(400));
         }
 
         Odontologo nuevoOdontologo = new Odontologo(dto.getNombre(),dto.getApellido(),dto.getMatricula());
@@ -37,12 +37,15 @@ public class OdontologoService {
         return StreamSupport.stream(this.odontologoRepository.findAll().spliterator(), false).toList();
     }
 
-    public void eliminar(Long id) {
+
+    public Odontologo eliminar(Long id) {
 
         if (!this.odontologoRepository.existsById(id)) {
             throw new ConsultorioApiException("No existe un odontologo con el id " + id, HttpStatusCode.valueOf(400));
         }
+        Odontologo odontologo = this.odontologoRepository.findById(id).get();
         this.odontologoRepository.deleteById(id);
+        return odontologo;
     }
 
 

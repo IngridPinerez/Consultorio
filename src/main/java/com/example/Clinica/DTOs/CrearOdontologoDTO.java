@@ -1,7 +1,5 @@
 package com.example.Clinica.DTOs;
 
-import jakarta.persistence.Column;
-
 public class CrearOdontologoDTO {
 
     private String nombre;

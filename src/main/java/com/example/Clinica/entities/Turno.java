@@ -10,22 +10,22 @@ public class Turno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 10, nullable = false)
+    @Column(length = 16, nullable = false)
     private Date fecha;
 
     @Column
-    private Long odontolog;
+    private Integer matriculaOdontologo;
 
     @Column
-    private Long pacient;
+    private Integer dniPaciente;
 
     public Turno() {
     }
 
-    public Turno(Date fecha, Long odontolog, Long pacient) {
+    public Turno(Date fecha, Integer matriculaOdontologo, Integer dniPaciente) {
         this.fecha = fecha;
-        this.odontolog = odontolog;
-        this.pacient = pacient;
+        this.matriculaOdontologo = matriculaOdontologo;
+        this.dniPaciente = dniPaciente;
     }
 
     public Long getId() {
@@ -36,20 +36,26 @@ public class Turno {
         return fecha;
     }
 
-    public Long getOdontologoId() {
-        return odontolog;
+    public Integer getMatriculaOdontologo() {
+        return matriculaOdontologo;
     }
 
-    public Long getPacienteId() {
-        return pacient;
+    public Integer getDniPaciente() {
+        return dniPaciente;
     }
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "odontologo_id", referencedColumnName = "id")
+    public Odontologo getOdontologo() {
+        return odontologo;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    @ManyToOne()
     Odontologo odontologo;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "paciente_id", referencedColumnName = "id")
+    @ManyToOne()
     Paciente paciente;
 
 }

@@ -5,7 +5,6 @@ import com.example.Clinica.Services.OdontologoService;
 import com.example.Clinica.entities.Odontologo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -30,8 +29,8 @@ public class OdontologoController {
     }
 
     @DeleteMapping("/{id}")
-    public void eliminarOdontologo(@PathVariable("id") Long id){
-        this.service.eliminar(id);
+    public Odontologo eliminarOdontologo(@PathVariable("id") Long id){
+        return this.service.eliminar(id);
     }
 
 }
