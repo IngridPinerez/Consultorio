@@ -4,30 +4,20 @@ import java.util.Date;
 public class CrearTurnoDTO {
 
     private Date fecha;
-    private Integer matriculaOdontologo;
-    private Integer dniPaciente;
     private Long odontologoId;
     private Long pacienteId;
 
     public CrearTurnoDTO() {
     }
 
-    public CrearTurnoDTO(Date fecha, Integer matriculaOdontologo, Integer dniPaciente) {
+    public CrearTurnoDTO(Date fecha, Long odontologoId, Long pacienteId) {
         this.fecha = fecha;
-        this.matriculaOdontologo = matriculaOdontologo;
-        this.dniPaciente = dniPaciente;
+        this.odontologoId = odontologoId;
+        this.pacienteId = pacienteId;
     }
 
     public Date getFecha() {
         return fecha;
-    }
-
-    public Integer getMatriculaOdontologo() {
-        return matriculaOdontologo;
-    }
-
-    public Integer getDniPaciente() {
-        return dniPaciente;
     }
 
     public Long getOdontologoId() {
@@ -37,4 +27,5 @@ public class CrearTurnoDTO {
     public Long getPacienteId() {
         return pacienteId;
     }
+
 }

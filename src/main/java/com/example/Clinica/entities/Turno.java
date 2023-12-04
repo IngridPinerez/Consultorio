@@ -1,5 +1,6 @@
 package com.example.Clinica.entities;
 import jakarta.persistence.*;
+
 import java.util.Date;
 
 @Entity
@@ -10,38 +11,26 @@ public class Turno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 16, nullable = false)
+    @Column(length = 20, nullable = false)
     private Date fecha;
 
-    @Column
-    private Integer matriculaOdontologo;
+    @ManyToOne()
+    Odontologo odontologo;
 
-    @Column
-    private Integer dniPaciente;
+    @ManyToOne()
+    Paciente paciente;
 
     public Turno() {
     }
 
-    public Turno(Date fecha, Integer matriculaOdontologo, Integer dniPaciente) {
+    public Turno(Date fecha, Odontologo odontologo, Paciente paciente) {
         this.fecha = fecha;
-        this.matriculaOdontologo = matriculaOdontologo;
-        this.dniPaciente = dniPaciente;
-    }
-
-    public Long getId() {
-        return id;
+        this.odontologo = odontologo;
+        this.paciente = paciente;
     }
 
     public Date getFecha() {
         return fecha;
-    }
-
-    public Integer getMatriculaOdontologo() {
-        return matriculaOdontologo;
-    }
-
-    public Integer getDniPaciente() {
-        return dniPaciente;
     }
 
     public Odontologo getOdontologo() {
@@ -51,11 +40,5 @@ public class Turno {
     public Paciente getPaciente() {
         return paciente;
     }
-
-    @ManyToOne()
-    Odontologo odontologo;
-
-    @ManyToOne()
-    Paciente paciente;
 
 }
